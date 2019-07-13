@@ -12,7 +12,7 @@ RUN apt-get install -y nodejs
 RUN npm install -g gulp
 
 ## PHP
-RUN apt-get install -y php php-xml php-gd php-mbstring composer nodejs
+# RUN apt-get install -y php php-xml php-gd php-mbstring composer nodejs
 
 ## PYTHON
 RUN curl -O https://bootstrap.pypa.io/get-pip.py \
