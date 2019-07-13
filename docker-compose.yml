@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+
+  teamcity:
+    image: jetbrains/teamcity-server:latest
+    container_name: TeamCity
+    volumes:
+      - /efs/teamcity/data:/data/teamcity_server/datadir
+      - /efs/teamcity/logs:/opt/teamcity/logs
+    ports:
+      - "8111:8111"
+    networks:
+      - network
+
+  agent1:
+    build:
+      context: ./
+      dockerfile: ./agent.dockerfile
+    container_name: TeamCity_Agent_1
+    volumes:
+      - /efs/teamcity/agent/conf1:/data/teamcity_agent/conf
+    environment:
+      SERVER_URL: teamcity:8111
+    networks:
+      - network
+
+  # agent2:
+  #   build:
+  #     context: ./
+  #     dockerfile: ./agent.dockerfile
+  #   container_name: TeamCity_Agent_2
+  #   volumes:
+  #     - /efs/teamcity/agent/conf2:/data/teamcity_agent/conf
+  #   environment:
+  #     SERVER_URL: teamcity:8111
+  #   networks:
+  #     - network
+
+  mysql:
+    image: mysql:latest
+    container_name: TeamCity_MySQL
+    volumes:
+      - /efs/teamcity/mysql/data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: teamcity
+      MYSQL_USER: teamcity
+      MYSQL_PASSWORD: teamcity
+    networks:
+      - network
+
+networks:
+  network:
+      driver: bridge
