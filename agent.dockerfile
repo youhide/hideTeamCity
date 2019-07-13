@@ -15,9 +15,9 @@ RUN npm install -g gulp
 # RUN apt-get install -y php php-xml php-gd php-mbstring composer nodejs
 
 ## PYTHON
-RUN curl -O https://bootstrap.pypa.io/get-pip.py \
-&& python3 get-pip.py \
-&& pip install awsebcli --upgrade
+# RUN curl -O https://bootstrap.pypa.io/get-pip.py \
+# && python3 get-pip.py \
+# && pip install awsebcli --upgrade
 
 ## AWS
 RUN mkdir ~/.aws
