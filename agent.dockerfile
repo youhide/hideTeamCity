@@ -7,12 +7,12 @@ RUN apt-get update
 RUN apt-get install -y wget
 
 ## NODEJS
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-RUN npm install -g gulp yarn
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install -g gulp
 
 ## PHP
-RUN apt-get update \
-&& apt-get install -y php php-xml php-gd php-mbstring composer nodejs
+RUN apt-get install -y php php-xml php-gd php-mbstring composer nodejs
 
 ## PYTHON
 RUN curl -O https://bootstrap.pypa.io/get-pip.py \
