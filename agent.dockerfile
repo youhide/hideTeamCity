@@ -12,22 +12,22 @@ RUN apt-get install -y nodejs
 RUN npm install -g gulp
 
 ## PHP
-# RUN apt-get install -y php php-xml php-gd php-mbstring composer nodejs
+# RUN apt-get install -y php php-xml php-gd php-mbstring composer
 
 ## PYTHON
-# RUN curl -O https://bootstrap.pypa.io/get-pip.py \
-# && python3 get-pip.py \
-# && pip install awsebcli --upgrade
+RUN curl -O https://bootstrap.pypa.io/get-pip.py \
+&& python3 get-pip.py
 
 ## AWS
-RUN mkdir ~/.aws
-RUN touch ~/.aws/credentials \
-&& echo "[eb-cli]" >> ~/.aws/credentials \
-&& echo "aws_access_key_id = XXX" >> ~/.aws/credentials \
-&& echo "aws_secret_access_key = XXX" >> ~/.aws/credentials
-RUN touch ~/.aws/config \
-&& echo "[default]" >> ~/.aws/config \
-&& echo "region = us-east-1" >> ~/.aws/config
+# RUN pip install awscli awsebcli --upgrade
+# RUN mkdir ~/.aws
+# RUN touch ~/.aws/credentials \
+# && echo "[eb-cli]" >> ~/.aws/credentials \
+# && echo "aws_access_key_id = XXX" >> ~/.aws/credentials \
+# && echo "aws_secret_access_key = XXX" >> ~/.aws/credentials
+# RUN touch ~/.aws/config \
+# && echo "[default]" >> ~/.aws/config \
+# && echo "region = us-east-1" >> ~/.aws/config
 
 ## DOTNET CORE SDK 2.2
 RUN wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
