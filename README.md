@@ -1,4 +1,5 @@
 # hideTeamCity
+[![Build Status](https://github.com/youhide/hideTeamCity/workflows/Docker%20Image%20CI/badge.svg)](https://github.com/youhide/hideTeamCity/actions?query=workflow%3A%22Docker+Image+CI%22)
 
 Ready to use TeamCity docker compose stack.
 
