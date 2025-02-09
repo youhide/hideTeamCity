@@ -7,9 +7,9 @@ RUN apt-get update
 RUN apt-get install -y wget unzip build-essential
 
 ## NODEJS
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt-get install -y nodejs
-RUN npm install -g gulp
+#RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+#RUN apt-get install -y nodejs
+#RUN npm install -g gulp
 
 ## PHP
 # RUN apt-get install -y php php-xml php-gd php-mbstring composer
@@ -37,11 +37,11 @@ RUN npm install -g gulp
 # RUN apt-get install -y dotnet-sdk-2.2
 
 ## Terraform
-RUN wget https://releases.hashicorp.com/terraform/0.12.4/terraform_0.12.4_linux_amd64.zip \
-&& unzip terraform_0.12.4_linux_amd64.zip \
-&& mv terraform /usr/local/bin/
+#RUN wget https://releases.hashicorp.com/terraform/0.12.4/terraform_0.12.4_linux_amd64.zip \
+#&& unzip terraform_0.12.4_linux_amd64.zip \
+#&& mv terraform /usr/local/bin/
 
 ## Packer
-RUN wget https://releases.hashicorp.com/packer/1.4.2/packer_1.4.2_linux_amd64.zip \
-&& unzip packer_1.4.2_linux_amd64.zip \
-&& mv packer /usr/local/bin/
+#RUN wget https://releases.hashicorp.com/packer/1.4.2/packer_1.4.2_linux_amd64.zip \
+#&& unzip packer_1.4.2_linux_amd64.zip \
+#&& mv packer /usr/local/bin/
