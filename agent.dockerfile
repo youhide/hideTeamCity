@@ -6,8 +6,8 @@ LABEL maintainer="Youri T. K. K. Mattar <youri@youhide.com.br>"
 USER root
 
 ## OS DEPENDENCIES
-# RUN apt-get update
-# RUN apt-get install -y wget unzip build-essential
+RUN apt-get update
+RUN apt-get install -y python3-pip
 
 ## NVM
 # Switch to the teamcity user for NVM installation
