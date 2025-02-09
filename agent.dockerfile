@@ -1,47 +1,29 @@
 FROM jetbrains/teamcity-agent:latest
 
-LABEL maintainer="Youri T. K. K. Mattar <youri@youhide.com.br>"
+USER root
 
-## OS DEPENDENCIES
-RUN apt-get update
-RUN apt-get install -y wget unzip build-essential
+RUN apt-get update && apt-get install -y \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  gnupg \
+  lsb-release \
+  software-properties-common
 
-## NODEJS
-#RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-#RUN apt-get install -y nodejs
-#RUN npm install -g gulp
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
-## PHP
-# RUN apt-get install -y php php-xml php-gd php-mbstring composer
+RUN echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-## PYTHON
-# RUN curl -O https://bootstrap.pypa.io/get-pip.py \
-# && python3 get-pip.py
+RUN apt-get update && apt-get install -y \
+  docker-ce \
+  docker-ce-cli \
+  containerd.io
 
-## AWS
-# RUN pip install awscli awsebcli --upgrade
-# RUN mkdir ~/.aws
-# RUN touch ~/.aws/credentials \
-# && echo "[eb-cli]" >> ~/.aws/credentials \
-# && echo "aws_access_key_id = XXX" >> ~/.aws/credentials \
-# && echo "aws_secret_access_key = XXX" >> ~/.aws/credentials
-# RUN touch ~/.aws/config \
-# && echo "[default]" >> ~/.aws/config \
-# && echo "region = us-east-1" >> ~/.aws/config
+RUN usermod -aG docker buildagent
 
-## DOTNET CORE SDK 2.2
-# RUN wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
-# RUN dpkg -i packages-microsoft-prod.deb
-# RUN apt-get install -y apt-transport-https
-# RUN apt-get update
-# RUN apt-get install -y dotnet-sdk-2.2
+RUN apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
 
-## Terraform
-#RUN wget https://releases.hashicorp.com/terraform/0.12.4/terraform_0.12.4_linux_amd64.zip \
-#&& unzip terraform_0.12.4_linux_amd64.zip \
-#&& mv terraform /usr/local/bin/
-
-## Packer
-#RUN wget https://releases.hashicorp.com/packer/1.4.2/packer_1.4.2_linux_amd64.zip \
-#&& unzip packer_1.4.2_linux_amd64.zip \
-#&& mv packer /usr/local/bin/
+USER buildagent
