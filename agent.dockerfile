@@ -1,4 +1,4 @@
-FROM jetbrains/teamcity-agent:latest
+FROM jetbrains/teamcity-agent:2024.12.2-linux-sudo
 
 LABEL maintainer="Youri T. K. K. Mattar <youri@youhide.com.br>"
 
