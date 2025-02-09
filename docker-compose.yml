@@ -23,6 +23,7 @@ services:
     restart: always 
     volumes:
       - ./data/teamcity/agent/conf1:/data/teamcity_agent/conf
+      - docker_volumes:/var/lib/docker
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       SERVER_URL: teamcity:8111
@@ -39,6 +40,7 @@ services:
     restart: always 
     volumes:
       - ./data/teamcity/agent/conf2:/data/teamcity_agent/conf
+      - docker_volumes:/var/lib/docker
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       SERVER_URL: teamcity:8111
