@@ -34,7 +34,7 @@ services:
     container_name: TeamCity_Agent_2
     restart: always 
     volumes:
-      - /efs/teamcity/agent/conf2:/data/teamcity_agent/conf
+      - ./data/teamcity/agent/conf2:/data/teamcity_agent/conf
     environment:
       SERVER_URL: teamcity:8111
     networks:
