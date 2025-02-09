@@ -37,6 +37,7 @@ services:
     restart: always 
     volumes:
       - ./data/teamcity/agent/conf2:/data/teamcity_agent/conf
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       SERVER_URL: teamcity:8111
     networks:
