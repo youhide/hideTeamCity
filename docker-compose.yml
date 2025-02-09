@@ -18,6 +18,7 @@ services:
     build:
       context: ./
       dockerfile: ./agent.dockerfile
+      privileged: true
     container_name: TeamCity_Agent_1
     restart: always 
     volumes:
@@ -33,6 +34,7 @@ services:
     build:
       context: ./
       dockerfile: ./agent.dockerfile
+      privileged: true
     container_name: TeamCity_Agent_2
     restart: always 
     volumes:
