@@ -20,7 +20,6 @@ services:
       dockerfile: ./agent.dockerfile
       privileged: true
     container_name: TeamCity_Agent_1
-    user: 0:0
     restart: always 
     volumes:
       - ./data/teamcity/agent/conf1:/data/teamcity_agent/conf
@@ -37,7 +36,6 @@ services:
       dockerfile: ./agent.dockerfile
       privileged: true
     container_name: TeamCity_Agent_2
-    user: 0:0
     restart: always 
     volumes:
       - ./data/teamcity/agent/conf2:/data/teamcity_agent/conf
